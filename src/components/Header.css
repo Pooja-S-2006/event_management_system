@@ -1,0 +1,103 @@
+/* Header.css */
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-links a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #cbd5e0;
+}
+
+.auth-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.auth-buttons .login-btn,
+.auth-buttons .signup-btn {
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: background 0.3s ease;
+}
+
+.auth-buttons .login-btn {
+  border: 1px solid #fff;
+  color: #fff;
+}
+
+.auth-buttons .login-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.auth-buttons .signup-btn {
+  background: #667eea;
+  color: #fff;
+  border: none;
+}
+
+.auth-buttons .signup-btn:hover {
+  background: #5a67d8;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
+
+  .auth-buttons {
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+  }
+
+  .auth-buttons .login-btn,
+  .auth-buttons .signup-btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .logo {
+    font-size: 1.5rem;
+  }
+}
