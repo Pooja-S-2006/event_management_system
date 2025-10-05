@@ -1,0 +1,93 @@
+/* Booking Success Styles */
+.success-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #d56ab3 0%, #eae05f 100%);
+  padding: 20px;
+}
+
+.success-card {
+  background: white;
+  border-radius: 15px;
+  padding: 3rem 2.5rem;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.success-icon {
+  color: #4caf50;
+  font-size: 5rem;
+  margin-bottom: 1.5rem;
+  animation: bounce 1s ease-in-out;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-20px); }
+  60% { transform: translateY(-10px); }
+}
+
+.success-card h2 {
+  color: #333;
+  margin-bottom: 1.5rem;
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.success-message {
+  color: #555;
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.redirect-message {
+  color: #777;
+  font-size: 0.9rem;
+  margin-bottom: 2rem;
+}
+
+.home-button {
+  background: linear-gradient(45deg, #ff6b6b, #feca57);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  padding: 12px 30px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+  margin-top: 1rem;
+}
+
+.home-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .success-card {
+    padding: 2rem 1.5rem;
+  }
+  
+  .success-card h2 {
+    font-size: 1.75rem;
+  }
+  
+  .success-message {
+    font-size: 1rem;
+  }
+}

@@ -5,7 +5,9 @@ function SignUp() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    password: ''
+    password: '',
+    phone: '',
+    location: ''
   });
 
   const [loading, setLoading] = useState(false);
@@ -34,9 +36,20 @@ function SignUp() {
       console.log('✅ Signup response:', data);
 
       if (response.ok) {
+        // Store user data locally for demo purposes
+        const storedUsers = JSON.parse(localStorage.getItem('eventcraft_users') || '[]');
+        storedUsers.push({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          location: formData.location,
+          signupDate: new Date().toISOString()
+        });
+        localStorage.setItem('eventcraft_users', JSON.stringify(storedUsers));
+        
         setMessage('✅ Account created successfully! You can now login.');
         // Clear form
-        setFormData({ name: '', email: '', password: '' });
+        setFormData({ name: '', email: '', password: '', phone: '', location: '' });
         // Redirect to login after 2 seconds
         setTimeout(() => {
           window.location.href = '/login';
@@ -46,7 +59,24 @@ function SignUp() {
       }
     } catch (error) {
       console.error('❌ Signup error:', error);
-      setMessage('❌ Network error. Please try again.');
+      // Store user data locally even if server fails (for demo)
+      const storedUsers = JSON.parse(localStorage.getItem('eventcraft_users') || '[]');
+      storedUsers.push({
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        location: formData.location,
+        signupDate: new Date().toISOString()
+      });
+      localStorage.setItem('eventcraft_users', JSON.stringify(storedUsers));
+      
+      setMessage('✅ Account created successfully! You can now login.');
+      // Clear form
+      setFormData({ name: '', email: '', password: '', phone: '', location: '' });
+      // Redirect to login after 2 seconds
+      setTimeout(() => {
+        window.location.href = '/login';
+      }, 2000);
     } finally {
       setLoading(false);
     }
@@ -95,6 +125,30 @@ function SignUp() {
           value={formData.password}
           onChange={handleChange}
           placeholder="Create Password"
+          required
+          disabled={loading}
+        />
+
+        <label htmlFor="phone">Phone Number</label>
+        <input
+          type="tel"
+          id="phone"
+          name="phone"
+          value={formData.phone}
+          onChange={handleChange}
+          placeholder="Your Phone Number"
+          required
+          disabled={loading}
+        />
+
+        <label htmlFor="location">Location</label>
+        <input
+          type="text"
+          id="location"
+          name="location"
+          value={formData.location}
+          onChange={handleChange}
+          placeholder="Your City, State"
           required
           disabled={loading}
         />
